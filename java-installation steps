@@ -1,0 +1,69 @@
+Setps for Installation java in ubuntu
+
+step-1: sudo tar -xvf jdk-8u5-linux-i586.tar.gz
+step-2: sudo nano /etc/profile
+	JAVA_HOME=<Directory where JAVA has been extracted>/jdk1.8.0
+	PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+	export JAVA_HOME
+	export PATH
+step-3: . /etc/profile
+step-4: Its time to let Ubuntu know where our JDK/JRE is located.
+	
+	sudo update-alternatives --install "/usr/bin/java" "java" "<Directory where JAVA has been extracted>/bin/java" 1
+	sudo update-alternatives --install "/usr/bin/javac" "javac" "<Directory where JAVA has been extracted>/bin/javac" 1
+	sudo update-alternatives --install "/usr/bin/javaws" "javaws" "<Directory where JAVA has been extracted>/bin/javaws" 1
+step-5:
+	sudo update-alternatives --set java <Directory where JAVA has been extracted>/bin/java
+	sudo update-alternatives --set javac <Directory where JAVA has been extracted>/bin/javac
+	sudo update-alternatives --set javaws <Directory where JAVA has been extracted>/bin/javaws
+step-6:
+	java -version
+	
+java -jar ../yuicompressor-2.4.8.jar -o '.css$:-min.css' *.css
+java -jar ../yuicompressor-2.4.8.jar -o '.js$:-min.js' *.js
+java -jar yuicompressor-x.y.z.jar myfile.js -o myfile-min.js --charset utf-8
+java -jar yuicompressor-x.y.z.jar myfile.js -o myfile-min.js
+
+Others steps
+
+sudo mkdir -p /usr/lib/jvm
+sudo tar -zxf ~/Downloads/jdk-20_linux-aarch64_bin.tar.gz -C /usr/lib/jvm/
+
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-20/bin/java 1
+
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-20/bin/javac 1
+
+sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk-20/bin/jar 1
+
+
+sudo update-alternatives --config java
+
+sudo update-alternatives --config javac
+
+sudo update-alternatives --config jar
+
+java -version
+
+javac -version
+
+
+export JAVA_HOME=/usr/lib/jvm/jdk-20
+setenv JAVA_HOME=/usr/lib/jvm/jdk-20
+
+sudo gedit /etc/profile.d/jdk.sh
+	
+	export J2SDKDIR=/usr/lib/jvm/jdk-20
+	export J2REDIR=/usr/lib/jvm/jdk-20
+	export PATH=$PATH:/usr/lib/jvm/jdk-20/bin:/usr/lib/jvm/jdk-20/db/bin
+	export JAVA_HOME=/usr/lib/jvm/jdk-20
+	export DERBY_HOME=/usr/lib/jvm/jdk-20/db
+	
+sudo gedit /etc/profile.d/jdk.csh
+
+	setenv J2SDKDIR /usr/lib/jvm/jdk-20
+	setenv J2REDIR /usr/lib/jvm/jdk-20
+	setenv PATH ${PATH}:/usr/lib/jvm/jdk-19/bin:/usr/lib/jvm/jdk-20/db/bin
+	setenv JAVA_HOME /usr/lib/jvm/jdk-20
+	setenv DERBY_HOME /usr/lib/jvm/jdk-20/db
+	
+java -jar yuicompressor.jar -o '.css$:-min.css' *.css
